@@ -209,12 +209,19 @@
                                     <action selector="addPostPressed:" destination="TJe-a6-Kdz" eventType="touchUpInside" id="b9P-tn-eTi"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fT8-EB-abx">
+                                <rect key="frame" x="159" y="309" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="jBS-fP-flH"/>
                     </view>
                     <navigationItem key="navigationItem" id="WkO-jg-Ir6"/>
                     <connections>
+                        <outlet property="dateTextField" destination="fT8-EB-abx" id="vVQ-MU-hfs"/>
                         <outlet property="socialDescriptionTextField" destination="5si-MP-LMn" id="gBC-jw-X1J"/>
                         <outlet property="socialNameTextField" destination="rQf-gP-eBw" id="biM-cl-VQ5"/>
                     </connections>

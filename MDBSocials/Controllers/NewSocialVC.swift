@@ -16,13 +16,39 @@ class NewSocialVC: UIViewController {
 
     @IBOutlet weak var socialNameTextField: UITextField!
     @IBOutlet weak var socialDescriptionTextField: UITextField!
+    @IBOutlet weak var dateTextField: UITextField!
+    
+    private var datePicker: UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .dateAndTime
+        datePicker?.addTarget(self, action: #selector(self.dateChanged(datePicker:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        dateTextField.inputView = datePicker
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateTextField.text = dateFormatter.string(from: datePicker.date)
+        view.endEditing(true)
     }
     
     @IBAction func addPostPressed(_ sender: Any) {
-        if socialNameTextField.text != "" && socialDescriptionTextField.text != "" {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if socialNameTextField.text != "" && socialDescriptionTextField.text != "" && dateTextField.text != "" && dateFormatterGet.date(from: dateTextField.text!) {
             let db = Database.database().reference()
             let socialsNode = db.child("Socials")
             let user = Auth.auth().currentUser
