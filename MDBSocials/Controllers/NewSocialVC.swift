@@ -22,14 +22,15 @@ class NewSocialVC: UIViewController {
     }
     
     @IBAction func addPostPressed(_ sender: Any) {
-        if socialNameTextField.text != nil && socialDescriptionTextField.text != nil {
+        if socialNameTextField.text != "" && socialDescriptionTextField.text != "" {
             let db = Database.database().reference()
-            let socialsNode = db.child("socials")
+            let socialsNode = db.child("Socials")
             let user = Auth.auth().currentUser
-            let socialId = socialsNode.childByAutoId()
-            let post = ["poster" : user?.uid, "socialName" : socialNameTextField.text, "socialDescription" : socialDescriptionTextField.text]
-            let childUpdates = ["/socials/\(socialId)": post]
-            db.updateChildValues(childUpdates)
+            let socialId = socialsNode.childByAutoId().key
+            let socialNode = socialsNode.child(socialId!)
+            let post = ["poster" : user!.uid, "socialName" : socialNameTextField.text!, "socialDescription" : socialDescriptionTextField.text!]
+            socialNode.updateChildValues(post)
+            self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Error", message: "Please fill in all fields before adding a post.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

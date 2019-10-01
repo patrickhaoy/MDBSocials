@@ -43,8 +43,8 @@ class LoginVC: UIViewController {
                 self.displayAlert(title: "Error", message: "Sign In Error")
                 return
             }
+            self.performSegue(withIdentifier: "loginToFeed", sender: self)
         }
-        self.performSegue(withIdentifier: "loginToFeed", sender: self)
     }
     
     func displayAlert(title: String, message: String) {

@@ -7,6 +7,7 @@ target 'MDBSocials' do
 
   # Pods for MDBSocials
 # add the Firebase pod for Google Analytics
+pod 'Firebase'
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
