@@ -11,7 +11,6 @@ import Firebase
 import FirebaseAuth
 
 class FeedVC: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
@@ -37,4 +36,12 @@ class FeedVC: UIViewController {
     @objc func addSocialPressed() {
         self.performSegue(withIdentifier: "feedToSocial", sender: self)
     }
+    
+//    func updateEvents() {
+//        let socialNode = Database.database().reference().child("Socials")
+//
+//        socialNode.observe(DataEventType.childChanged, with: { (snapshot) in
+//            let newEvent = snapshot.value as? [String : Any]
+//        })
+//    }
 }

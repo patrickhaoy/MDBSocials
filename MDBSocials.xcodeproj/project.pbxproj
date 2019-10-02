@@ -17,6 +17,8 @@
 		54BD3A292343C98D00A2F34F /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A282343C98D00A2F34F /* FeedVC.swift */; };
 		54BD3A2B2343CFA900A2F34F /* NewSocialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A2A2343CFA900A2F34F /* NewSocialVC.swift */; };
 		54BD3A2D2343DCD700A2F34F /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A2C2343DCD700A2F34F /* SignUpVC.swift */; };
+		54BD3A332344678800A2F34F /* NewSocialVC-ImgExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A322344678800A2F34F /* NewSocialVC-ImgExtension.swift */; };
+		54BD3A3523446A2600A2F34F /* FeedVC-TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A3423446A2600A2F34F /* FeedVC-TableViewExtension.swift */; };
 		8AAFE3A8F6797658E2E1D48F /* Pods_MDBSocials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5C05D1160CD3D3625C208E /* Pods_MDBSocials.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		54BD3A282343C98D00A2F34F /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		54BD3A2A2343CFA900A2F34F /* NewSocialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSocialVC.swift; sourceTree = "<group>"; };
 		54BD3A2C2343DCD700A2F34F /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		54BD3A322344678800A2F34F /* NewSocialVC-ImgExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewSocialVC-ImgExtension.swift"; sourceTree = "<group>"; };
+		54BD3A3423446A2600A2F34F /* FeedVC-TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedVC-TableViewExtension.swift"; sourceTree = "<group>"; };
 		60DAE60C97F683C74AE074FA /* Pods-MDBSocials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocials.debug.xcconfig"; path = "Target Support Files/Pods-MDBSocials/Pods-MDBSocials.debug.xcconfig"; sourceTree = "<group>"; };
 		BA4C7AE731975679FDFB46D6 /* Pods-MDBSocials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocials.release.xcconfig"; path = "Target Support Files/Pods-MDBSocials/Pods-MDBSocials.release.xcconfig"; sourceTree = "<group>"; };
 		FD5C05D1160CD3D3625C208E /* Pods_MDBSocials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,10 +100,10 @@
 		54BD3A252343C47D00A2F34F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				54BD3A132343C2DB00A2F34F /* LoginVC.swift */,
-				54BD3A282343C98D00A2F34F /* FeedVC.swift */,
-				54BD3A2A2343CFA900A2F34F /* NewSocialVC.swift */,
-				54BD3A2C2343DCD700A2F34F /* SignUpVC.swift */,
+				54BD3A2E2344672200A2F34F /* LoginVC */,
+				54BD3A2F2344672B00A2F34F /* FeedVC */,
+				54BD3A302344673900A2F34F /* NewSocialVC */,
+				54BD3A312344674000A2F34F /* SignUpVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -116,6 +120,40 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		54BD3A2E2344672200A2F34F /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				54BD3A132343C2DB00A2F34F /* LoginVC.swift */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		54BD3A2F2344672B00A2F34F /* FeedVC */ = {
+			isa = PBXGroup;
+			children = (
+				54BD3A282343C98D00A2F34F /* FeedVC.swift */,
+				54BD3A3423446A2600A2F34F /* FeedVC-TableViewExtension.swift */,
+			);
+			path = FeedVC;
+			sourceTree = "<group>";
+		};
+		54BD3A302344673900A2F34F /* NewSocialVC */ = {
+			isa = PBXGroup;
+			children = (
+				54BD3A2A2343CFA900A2F34F /* NewSocialVC.swift */,
+				54BD3A322344678800A2F34F /* NewSocialVC-ImgExtension.swift */,
+			);
+			path = NewSocialVC;
+			sourceTree = "<group>";
+		};
+		54BD3A312344674000A2F34F /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				54BD3A2C2343DCD700A2F34F /* SignUpVC.swift */,
+			);
+			path = SignUpVC;
 			sourceTree = "<group>";
 		};
 		7412BF647FF1EFCC6696D666 /* Pods */ = {
@@ -247,6 +285,8 @@
 				54BD3A142343C2DB00A2F34F /* LoginVC.swift in Sources */,
 				54BD3A102343C2DB00A2F34F /* AppDelegate.swift in Sources */,
 				54BD3A122343C2DB00A2F34F /* SceneDelegate.swift in Sources */,
+				54BD3A3523446A2600A2F34F /* FeedVC-TableViewExtension.swift in Sources */,
+				54BD3A332344678800A2F34F /* NewSocialVC-ImgExtension.swift in Sources */,
 				54BD3A2D2343DCD700A2F34F /* SignUpVC.swift in Sources */,
 				54BD3A2B2343CFA900A2F34F /* NewSocialVC.swift in Sources */,
 			);
