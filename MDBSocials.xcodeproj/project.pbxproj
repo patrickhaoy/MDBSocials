@@ -22,6 +22,8 @@
 		54BD3A39234525BB00A2F34F /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A38234525BB00A2F34F /* Social.swift */; };
 		54BD3A3B23453ADB00A2F34F /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A3A23453ADB00A2F34F /* SocialCell.swift */; };
 		54BD3A3E23455CF000A2F34F /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A3D23455CF000A2F34F /* DetailVC.swift */; };
+		54BD3A40234596DB00A2F34F /* FeedVC-Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A3F234596DB00A2F34F /* FeedVC-Firebase.swift */; };
+		54BD3A422345975E00A2F34F /* NewSocialVC-TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BD3A412345975E00A2F34F /* NewSocialVC-TextView.swift */; };
 		8AAFE3A8F6797658E2E1D48F /* Pods_MDBSocials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5C05D1160CD3D3625C208E /* Pods_MDBSocials.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		54BD3A38234525BB00A2F34F /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 		54BD3A3A23453ADB00A2F34F /* SocialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
 		54BD3A3D23455CF000A2F34F /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		54BD3A3F234596DB00A2F34F /* FeedVC-Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedVC-Firebase.swift"; sourceTree = "<group>"; };
+		54BD3A412345975E00A2F34F /* NewSocialVC-TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewSocialVC-TextView.swift"; sourceTree = "<group>"; };
 		60DAE60C97F683C74AE074FA /* Pods-MDBSocials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocials.debug.xcconfig"; path = "Target Support Files/Pods-MDBSocials/Pods-MDBSocials.debug.xcconfig"; sourceTree = "<group>"; };
 		BA4C7AE731975679FDFB46D6 /* Pods-MDBSocials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocials.release.xcconfig"; path = "Target Support Files/Pods-MDBSocials/Pods-MDBSocials.release.xcconfig"; sourceTree = "<group>"; };
 		FD5C05D1160CD3D3625C208E /* Pods_MDBSocials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,7 @@
 			children = (
 				54BD3A282343C98D00A2F34F /* FeedVC.swift */,
 				54BD3A3423446A2600A2F34F /* FeedVC-TableViewExtension.swift */,
+				54BD3A3F234596DB00A2F34F /* FeedVC-Firebase.swift */,
 			);
 			path = FeedVC;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			children = (
 				54BD3A2A2343CFA900A2F34F /* NewSocialVC.swift */,
 				54BD3A322344678800A2F34F /* NewSocialVC-ImgExtension.swift */,
+				54BD3A412345975E00A2F34F /* NewSocialVC-TextView.swift */,
 			);
 			path = NewSocialVC;
 			sourceTree = "<group>";
@@ -300,11 +306,13 @@
 			files = (
 				54BD3A292343C98D00A2F34F /* FeedVC.swift in Sources */,
 				54BD3A142343C2DB00A2F34F /* LoginVC.swift in Sources */,
+				54BD3A422345975E00A2F34F /* NewSocialVC-TextView.swift in Sources */,
 				54BD3A3E23455CF000A2F34F /* DetailVC.swift in Sources */,
 				54BD3A102343C2DB00A2F34F /* AppDelegate.swift in Sources */,
 				54BD3A122343C2DB00A2F34F /* SceneDelegate.swift in Sources */,
 				54BD3A3523446A2600A2F34F /* FeedVC-TableViewExtension.swift in Sources */,
 				54BD3A332344678800A2F34F /* NewSocialVC-ImgExtension.swift in Sources */,
+				54BD3A40234596DB00A2F34F /* FeedVC-Firebase.swift in Sources */,
 				54BD3A2D2343DCD700A2F34F /* SignUpVC.swift in Sources */,
 				54BD3A39234525BB00A2F34F /* Social.swift in Sources */,
 				54BD3A3B23453ADB00A2F34F /* SocialCell.swift in Sources */,

@@ -12,7 +12,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-class NewSocialVC: UIViewController, UITextViewDelegate {
+class NewSocialVC: UIViewController {
 
     @IBOutlet weak var socialNameTextField: UITextField!
     @IBOutlet weak var socialDescriptionTextField: UITextView!
@@ -36,20 +36,6 @@ class NewSocialVC: UIViewController, UITextViewDelegate {
         
         socialDescriptionTextField.text = "Social Description"
         socialDescriptionTextField.textColor = UIColor.lightGray
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Social Description"
-            textView.textColor = UIColor.lightGray
-        }
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -95,6 +81,7 @@ class NewSocialVC: UIViewController, UITextViewDelegate {
             let imageRef = Storage.storage().reference().child("images").child(socialId!)
             let imageData = imageView.image!.jpegData(compressionQuality: 1.0)
             
+            print("NewSocialVC: ", imageData)
             imageRef.putData(imageData!, metadata: nil) { (metadata, err) in
                 if err != nil {
                     self.displayAlert(title: "Error", message: "Error uploading image")
