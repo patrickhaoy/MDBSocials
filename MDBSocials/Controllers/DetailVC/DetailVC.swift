@@ -29,7 +29,7 @@ class DetailVC: UIViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        socialDate.text = formatter.string(from: selectedSocial.socialDate)
+        socialDate.text = "Date: " + formatter.string(from: selectedSocial.socialDate)
 
         socialDescription.text = selectedSocial.socialDescription
         guard let interested = selectedSocial.interested else {

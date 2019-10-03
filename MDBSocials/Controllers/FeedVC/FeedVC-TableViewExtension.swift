@@ -15,7 +15,7 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SocialCell") as! SocialCell
-        cell.posterLabel.text = socials[indexPath.row].poster
+        cell.posterLabel.text = "Hosted by " + socials[indexPath.row].poster!
         cell.socialNameLabel.text = socials[indexPath.row].socialName
         cell.socialImageView.image = socials[indexPath.row].socialImage
         guard let interested = socials[indexPath.row].interested else {
