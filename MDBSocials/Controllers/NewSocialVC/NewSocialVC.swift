@@ -12,10 +12,10 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-class NewSocialVC: UIViewController {
+class NewSocialVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var socialNameTextField: UITextField!
-    @IBOutlet weak var socialDescriptionTextField: UITextField!
+    @IBOutlet weak var socialDescriptionTextField: UITextView!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -33,6 +33,23 @@ class NewSocialVC: UIViewController {
         view.addGestureRecognizer(tapGesture)
         
         dateTextField.inputView = datePicker
+        
+        socialDescriptionTextField.text = "Social Description"
+        socialDescriptionTextField.textColor = UIColor.lightGray
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Social Description"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -71,10 +88,11 @@ class NewSocialVC: UIViewController {
         if socialNameTextField.text != "" && socialDescriptionTextField.text != "" && dateTextField.text != "" && (dateFormatterGet.date(from: dateTextField.text!) != nil) && imageView.image != nil {
             let db = Database.database().reference()
             let socialsNode = db.child("Socials")
+            let user = Auth.auth().currentUser
+            let socialId = socialsNode.childByAutoId().key
             
             //Add Image to Storage
-            let imageId = socialsNode.childByAutoId().key
-            let imageRef = Storage.storage().reference().child("images").child(imageId!)
+            let imageRef = Storage.storage().reference().child("images").child(socialId!)
             let imageData = imageView.image!.jpegData(compressionQuality: 1.0)
             
             imageRef.putData(imageData!, metadata: nil) { (metadata, err) in
@@ -82,15 +100,17 @@ class NewSocialVC: UIViewController {
                     self.displayAlert(title: "Error", message: "Error uploading image")
                     return
                 }
+
+                //Add to Realtime Database
+                let socialNode = socialsNode.child(socialId!)
+                let usersNode = db.child("Users")
+                usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let userInfo = snapshot.value as? [String:Any] ?? [:]
+                    let post = ["poster" : userInfo["name"], "socialName" : self.socialNameTextField.text!, "socialDescription" : self.socialDescriptionTextField.text!, "socialDate": self.dateTextField.text!]
+                    socialNode.updateChildValues(post)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
-            
-            //Add to Realtime Database
-            let user = Auth.auth().currentUser
-            let socialId = socialsNode.childByAutoId().key
-            let socialNode = socialsNode.child(socialId!)
-            let post = ["poster" : user!.uid, "socialName" : socialNameTextField.text!, "socialDescription" : socialDescriptionTextField.text!, "socialDate": dateTextField.text!, "socialImage" : imageId!]
-            socialNode.updateChildValues(post)
-            self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Error", message: "Please fill in all fields appropriately before adding a post.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

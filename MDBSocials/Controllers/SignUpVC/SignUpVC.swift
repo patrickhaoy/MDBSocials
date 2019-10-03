@@ -51,8 +51,7 @@ class SignUpVC: UIViewController {
             }
             let db = Database.database().reference()
             let usersNode = db.child("Users")
-            let newUserId = usersNode.childByAutoId().key
-            let userNode = usersNode.child(newUserId!)
+            let userNode = usersNode.child(user!.user.uid)
             userNode.updateChildValues(["name": self.nameTextField.text!, "username": self.usernameTextField.text!, "email": self.emailTextField.text!])
             self.performSegue(withIdentifier: "signupToFeed", sender: self)
         }

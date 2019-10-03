@@ -18,6 +18,10 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
 
     @IBAction func loginPressed(_ sender: Any) {
         handleLogin()
