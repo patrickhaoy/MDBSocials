@@ -37,6 +37,14 @@ class DetailVC: UIViewController {
             return
         }
         numOfInterested.text = "\(selectedSocial.interested.count) interested!"
+        
+        if selectedSocial.interested.contains(Auth.auth().currentUser!.uid) {
+            self.interestedButton.isEnabled = false
+            self.interestedButton.setTitleColor(UIColor.gray, for: .disabled)
+        } else {
+            self.interestedButton.isEnabled = true
+            self.interestedButton.setTitleColor(UIColor.black, for: .disabled)
+        }
     }
     
     @IBAction func interestedPressed(_ sender: Any) {
@@ -51,7 +59,7 @@ class DetailVC: UIViewController {
             
             let post = ["interested" : interestedUsers]
             socialNode.updateChildValues(post)
-            self.numOfInterested.text = "\(self.selectedSocial.interested.count) interested!"
+            self.numOfInterested.text = "\(interestedUsers.count) interested!"
             self.interestedButton.isEnabled = false
             self.interestedButton.setTitleColor(UIColor.gray, for: .disabled)
         })

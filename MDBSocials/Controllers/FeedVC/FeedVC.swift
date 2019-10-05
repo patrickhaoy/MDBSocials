@@ -18,9 +18,12 @@ class FeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
-        getAllSocials()
         addNewSocial()
         updateSocials()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        socialsTableView.reloadData()
     }
     
     func setUpNavBar() {

@@ -14,27 +14,26 @@ import FirebaseAuth
 extension FeedVC {
     func getAllSocials() {
         let socialsNode = Database.database().reference().child("Socials")
-        let imagesNode = Storage.storage().reference().child("images")
-        
         socialsNode.observeSingleEvent(of: .value, with: { (snapshot) in
+            let imagesNode = Storage.storage().reference().child("images")
+            
             let socialDict = snapshot.value as? [String:Any] ?? [:]
             var allSocials: [Social] = []
             
             for (key, value) in socialDict {
                 let currentSocial = Social(socialId: key, social: value as! [String : Any])
                 let currentSocialImage = imagesNode.child(key)
-                print("getAllSocials", currentSocialImage)
-                currentSocialImage.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-                    guard error != nil else {
+                currentSocialImage.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+                    guard error == nil else {
                         return
                     }
                     guard data != nil else {
-                        print("All events: data is nil")
                         return
                     }
                     currentSocial.socialImage = UIImage(data: data!)
                 }
                 allSocials.append(currentSocial)
+                self.socialsTableView.reloadData()
             }
             self.socials = allSocials.sorted(by: { $0.socialDate > $1.socialDate })
             self.socialsTableView.reloadData()
@@ -43,21 +42,21 @@ extension FeedVC {
     
     func addNewSocial() {
         let socialsNode = Database.database().reference().child("Socials")
-        let imagesNode = Storage.storage().reference().child("images")
-        
         socialsNode.observe(.childAdded, with: { (snapshot) in
+            let imagesNode = Storage.storage().reference().child("images")
+
             let newSocial = snapshot.value as? [String:Any] ?? [:]
             let social = Social(socialId: snapshot.key, social: newSocial)
             let socialImage = imagesNode.child(snapshot.key)
-            socialImage.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                guard error != nil else {
+            socialImage.getData(maxSize: 100 * 1024 * 1024) { data, error in
+                guard error == nil else {
                     return
                 }
                 guard data != nil else {
-                    print("AddNewSocial: data is nil")
                     return
                 }
                 social.socialImage = UIImage(data: data!)
+                self.socialsTableView.reloadData()
             }
             self.socials.append(social)
             self.socials.sort(by: {$0.socialDate > $1.socialDate})

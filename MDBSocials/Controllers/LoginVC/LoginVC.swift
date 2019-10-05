@@ -17,10 +17,9 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "loginToFeed", sender: self)
+        }
     }
 
     @IBAction func loginPressed(_ sender: Any) {

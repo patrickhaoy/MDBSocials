@@ -79,34 +79,24 @@ class NewSocialVC: UIViewController {
             
             //Add Image to Storage
             let imageRef = Storage.storage().reference().child("images").child(socialId!)
-            let imageData = imageView.image!.pngData()
-                //UIImagePNGRepresntation(imageView.image!)!
-                //imageView.image!.jpegData(compressionQuality: 1.0)
+            var imageData = imageView.image!.jpegData(compressionQuality: 0.1)
             
             print("NewSocialVC: ", imageData)
             imageRef.putData(imageData!, metadata: nil) { (metadata, err) in
-                if metadata == nil {
-                    return
-                }
                 if err != nil {
                     self.displayAlert(title: "Error", message: "Error uploading image")
                     return
                 }
-                imageRef.downloadURL { (url, error) in
-                    if url == nil {
-                        return
-                    }
-                    //Add to Realtime Database
-                    let socialNode = socialsNode.child(socialId!)
-                    let usersNode = db.child("Users")
-                    usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                        let userInfo = snapshot.value as? [String:Any] ?? [:]
-                        let post = ["poster" : userInfo["name"], "socialName" : self.socialNameTextField.text!, "socialDescription" : self.socialDescriptionTextField.text!, "socialDate": self.dateTextField.text!]
-                        socialNode.updateChildValues(post)
-                        self.dismiss(animated: true, completion: nil)
-                    })
-                }
+                //Add to Realtime Database
+                let socialNode = socialsNode.child(socialId!)
+                let usersNode = db.child("Users")
+                usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let userInfo = snapshot.value as? [String:Any] ?? [:]
+                    let post = ["poster" : userInfo["name"], "socialName" : self.socialNameTextField.text!, "socialDescription" : self.socialDescriptionTextField.text!, "socialDate": self.dateTextField.text!]
+                    socialNode.updateChildValues(post)
+                })
             }
+            self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Error", message: "Please fill in all fields appropriately before adding a post.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
